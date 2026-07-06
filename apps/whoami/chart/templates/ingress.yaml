@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: whoami
+  name: {{.Chart.Name}}
 spec:
-  ingressClassName: nginx
+  ingressClassName: {{ .Values.ingress.className }}
   rules:
-    - host: whoami.local
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
-          - path: /whoami
+          - path: {{ .Values.ingress.path }}
             pathType: Prefix
             backend:
               service:
                 name: whoami
                 port:
-                  number: 80
+                  number: {{ .Values.service.port }}

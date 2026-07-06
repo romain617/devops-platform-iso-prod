@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/romain617/devops-platform-iso-prod.git
     targetRevision: main
-    path: apps
+    path: apps/whoami/chart
 
   destination:
     server: https://kubernetes.default.svc

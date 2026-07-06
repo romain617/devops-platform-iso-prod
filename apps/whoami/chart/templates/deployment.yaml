@@ -19,24 +19,24 @@ spec:
           ports:
             - containerPort: 80
           livenessProbe:
-          httpGet:
-                  path: /
-                  port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
           
           readinessProbe:
-          httpGet:
-                  path: /
-                  port: 80
-          initialDelaySeconds: 2
-          periodSeconds: 5
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 5
           
           resources:
-          requests:
-                  cpu: {{ .Values.resources.requests.cpu }}
-                  memory: {{ .Values.resources.requests.memory }}
-          limits:
-                  cpu: {{ .Values.resources.limits.cpu }}
-                  memory: {{ .Values.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
 

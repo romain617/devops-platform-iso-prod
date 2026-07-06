@@ -1,19 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-apps
+  name: whoami
   namespace: argocd
+
 spec:
   project: default
 
   source:
     repoURL: https://github.com/romain617/devops-platform-iso-prod.git
     targetRevision: main
-    path: apps
+    path: apps/whoami/chart
+    helm:
+      valueFiles:
+        - values-dev.yaml
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: whoami
 
   syncPolicy:
     automated:

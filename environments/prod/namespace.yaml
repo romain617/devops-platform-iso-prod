@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: whoami_dev
+  name: whoami_prod
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: fastapi_dev
+  name: fastapi_prod

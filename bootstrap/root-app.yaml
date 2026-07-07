@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/romain617/devops-platform-iso-prod.git
+      revision: main
+      directories:
+      - path: environments/*
+
+  template:
+    metadata:
+      name: '{{path.basename}}'

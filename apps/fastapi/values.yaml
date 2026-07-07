@@ -2,8 +2,17 @@ replicaCount: 1
 
 image:
   repository: tiangolo/uvicorn-gunicorn-fastapi
-  tag: latest
+  tag: python3.11
   pullPolicy: IfNotPresent
 
 service:
+  type: ClusterIP
   port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: fastapi.local
+
+resources: {}

@@ -6,26 +6,22 @@ metadata:
 
 spec:
   generators:
-    - git:
-        repoURL: https://github.com/romain617/devops-platform-iso-prod.git
-        revision: main
-        directories:
-          - path: apps/*
+  - git:
+      repoURL: https://github.com/romain617/devops-platform-iso-prod.git
+      revision: main
+      directories:
+      - path: apps/*
 
   template:
     metadata:
       name: '{{path.basename}}'
-
     spec:
       project: default
 
       source:
         repoURL: https://github.com/romain617/devops-platform-iso-prod.git
         targetRevision: main
-        path: '{{path}}/'
-        helm:
-          valueFiles:
-            - '../../../environments/dev/values/{{path.basename}}.yaml'
+        path: '{{path}}/chart'
 
       destination:
         server: https://kubernetes.default.svc

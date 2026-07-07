@@ -12,3 +12,12 @@ resources:
   limits:
     cpu: 100m
     memory: 128Mi
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  className: nginx
+  host: whoami-prod.local
+  path: /

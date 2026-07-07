@@ -1,3 +1,5 @@
+name: whoami-dev
+
 replicaCount: 1
 
 image:

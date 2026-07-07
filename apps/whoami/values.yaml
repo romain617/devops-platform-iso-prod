@@ -1,3 +1,5 @@
+name: whoami-test
+
 replicaCount: 1
 
 image:

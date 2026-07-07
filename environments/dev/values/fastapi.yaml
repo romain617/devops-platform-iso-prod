@@ -1,4 +1,4 @@
-Name: fastapi-dev
+name: fastapi-dev
 
 replicaCount: 1
 

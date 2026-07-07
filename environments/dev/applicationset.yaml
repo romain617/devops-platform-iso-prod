@@ -19,10 +19,10 @@ spec:
     spec:
       project: default
 
-      source:
+      sources:
         - repoURL: https://github.com/romain617/devops-platform-iso-prod.git
           targetRevision: main
-          path: '{{path}}/'
+          path: '{{path}}
           helm:
             valueFiles:
               - $values/environments/dev/values/{{path.basename}}.yaml

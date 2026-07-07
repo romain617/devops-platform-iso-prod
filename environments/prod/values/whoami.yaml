@@ -1,3 +1,5 @@
+name: whoami-prod
+
 replicaCount: 2
 
 image:
@@ -14,6 +16,7 @@ resources:
     memory: 128Mi
 
 service:
+  name: whoami-prod
   type: ClusterIP
 
 ingress:

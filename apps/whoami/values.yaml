@@ -8,13 +8,14 @@ image:
   pullPolicy: IfNotPresent
 
 service:
+  name: whoami-test
   type: ClusterIP
   port: 80
 
 ingress:
   enabled: true
   className: nginx
-  host: whoami.local
+  host: whoami-test.local
   path: /
 
 nodeSelector: {}

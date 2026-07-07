@@ -1,5 +1,5 @@
 apiVersion: v2
-name: {{.Values.Name}}
+name: Whoami
 description: Whoami application
 type: application
 version: 0.1.0

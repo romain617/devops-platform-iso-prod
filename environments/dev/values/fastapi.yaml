@@ -1,3 +1,5 @@
+Name: fastapi-dev
+
 replicaCount: 1
 
 image:

@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: fastapi
+  name: {{ .Values.Name }}
 
 spec:
   replicas: {{ .Values.replicaCount }}
 
   selector:
     matchLabels:
-      app: fastapi
+      app: {{ .Values.Name }}
 
   template:
     metadata:
       labels:
-        app: fastapi
+        app: {{ .Values.Name }}
 
     spec:
       containers:
-        - name: fastapi
+        - name: {{ .Values.Name }}
 
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}

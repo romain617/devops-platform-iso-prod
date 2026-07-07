@@ -1,3 +1,5 @@
+name: fastapi-prod
+
 replicaCount: 2
 
 image:

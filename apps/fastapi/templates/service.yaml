@@ -8,7 +8,7 @@ spec:
   type: {{ .Values.service.type }}
 
   selector:
-    app: fastapi
+    app: {{ .Values.name }}
 
   ports:
     - port: {{ .Values.service.port }}

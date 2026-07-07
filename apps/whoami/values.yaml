@@ -1,4 +1,4 @@
-name: whoami-test
+Name: whoami-test
 
 replicaCount: 1
 

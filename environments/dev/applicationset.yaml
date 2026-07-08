@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dev-apps
+  namespace: argocd
+
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/romain617/devops-platform-iso-prod.git
+        revision: main
+        directories:
+          - path: apps/*
+
+  template:
+    metadata:
+      name: '{{path.basename}}-dev'
+
+    spec:
+      project: default
+
+      sources:
+        - repoURL: https://github.com/romain617/devops-platform-iso-prod.git
+          targetRevision: main
+          path: '{{path}}'
+          helm:
+            valueFiles:
+              - $values/environments/dev/values/{{path.basename}}.yaml
+
+        - repoURL: https://github.com/romain617/devops-platform-iso-prod.git
+          targetRevision: main
+          ref: values      
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}-dev'
+
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true

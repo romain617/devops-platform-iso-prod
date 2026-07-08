@@ -1,0 +1,37 @@
+name: nexus
+
+replicaCount: 1
+
+image:
+  repository: sonatype/nexus3
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: nexus
+  type: ClusterIP
+  port: 8081
+
+ingress:
+  enabled: true
+  className: nginx
+  host: nexus.local
+  path: /
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: "2Gi"
+  limits:
+    cpu: "2"
+    memory: "4Gi"
+
+securityContext:
+  runAsUser: 200
+  fsGroup: 200

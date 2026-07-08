@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ .Values.name }}
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+
+    spec:
+      securityContext:
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+
+      containers:
+        - name: {{ .Values.name }}
+
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          ports:
+            - containerPort: 8081
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+
+          volumeMounts:
+            - name: nexus-data
+              mountPath: /nexus-data
+
+      volumes:
+        - name: nexus-data
+          persistentVolumeClaim:
+            claimName: {{ .Values.name }}

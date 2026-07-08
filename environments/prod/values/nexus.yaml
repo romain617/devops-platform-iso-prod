@@ -1,4 +1,4 @@
-name: nexus-dev
+name: nexus-prod
 
 replicaCount: 1
 
@@ -8,14 +8,14 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  name: nexus-dev
+  name: nexus-prod
   type: ClusterIP
   port: 8081
 
 ingress:
   enabled: true
   className: nginx
-  host: nexus-dev.local
+  host: nexus-prod.local
   path: /
 
 persistence:
